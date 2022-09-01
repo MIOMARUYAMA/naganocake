@@ -1,41 +1,37 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
+
+  namespace :admin do
+    resources :customeres, only: [:index, :edit, :show, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    get '/' => 'homes#top'
+    resources :items, only: [:index, :new, :show, :edit, :create, :update]
+    resources :order_details, only: [:update]
+    resources :orders, only: [:update, :show]
   end
-  namespace :public do
+
+  scope module: :public do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
     get 'orders/new'
-    get 'orders/create'
+    post 'orders/create'
     get 'orders/thanks'
-    get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/index'
     get 'orders/show'
-  end
-  namespace :public do
     get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  namespace :public do
+    patch 'cart_items/update'
+    delete 'cart_items/destroy'
+    delete 'cart_items/destroy_all'
+    post 'cart_items/create'
     get 'customers/show'
     get 'customers/edit'
-    get 'customers/update'
+    patch 'customers/update'
     get 'customers/unsubscribe'
-    get 'customers/withdrawal'
+    patch 'customers/withdrawal'
+    get root to: 'homes#top'
+    get '/about'=>'homes#top'
   end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
 }
