@@ -1,0 +1,7 @@
+<h2>注文履歴一覧</h2>
+
+<% @orders.each do |order| %>
+  <%= link_to order.created_at,admin_order_path(order.id)  %>
+  <%= order.customer.name %>
+  <%= order.order_detail.amount %>
+<% end %>

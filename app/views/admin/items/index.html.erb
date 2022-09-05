@@ -1,0 +1,11 @@
+商品一覧
+
+<%= link_to '+', new_admin_item_path %>
+
+<% @items.each do |item| %>
+  <%= item.id %>
+  <%= link_to item.name, admin_item_path(item.id) %>
+  <%= item.price %>
+  <%= item.genre.name %>
+  <%= item.is_active ? '販売中' : '販売停止中' %>
+<% end %>
