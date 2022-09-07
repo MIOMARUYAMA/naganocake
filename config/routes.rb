@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe'
     patch 'customers/withdrawal'
     get root to: 'homes#top'
-    get '/about'=>'homes#top'
+    get '/about'=>'homes#about'
   end
 
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
