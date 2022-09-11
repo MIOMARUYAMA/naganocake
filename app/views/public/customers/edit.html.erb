@@ -1,2 +1,4 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h1>会員情報編集</h1>
+<%= form_with model: @item, url:admin_item_path do |f| %>
+<h4>氏名</h4>
+<%= f.text_field :name %>
