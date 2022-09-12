@@ -8,7 +8,7 @@
 <h4>ジャンル</h4>
 <%= @item.genre.name %>
 <h4>税込価格（税抜価格）</h4>
-<%= @item.price %>（）円
+<%= @item.price %>（<%= @item.add_tax_price.to_s(:dalimited) %>）円
 <h4>販売ステータス</h4>
 <%= @item.is_active ? '販売中' : '販売停止中' %>
 
