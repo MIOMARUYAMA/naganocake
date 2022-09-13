@@ -3,6 +3,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order=Order.new(order_params)
+    @order.save
+    redirect_to orders_confirm_path
   end
 
   def thanks
@@ -16,4 +19,11 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
+  
+  private
+  
+    def order_params
+      params.require(:order).permit(:payment_method, )
+    end
+
 end
