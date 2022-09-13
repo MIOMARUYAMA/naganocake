@@ -10,19 +10,14 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
-    get 'orders/new'
-    post 'orders/create'
+    delete 'cart_items/destroy_all'=>"cart_items#destroy_all", as:"destroy_all"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :orders, only: [:index, :new, :show, :create]
     get 'orders/thanks'
     post 'orders/confirm'
-    get 'orders/index'
-    get 'orders/show'
-    get 'cart_items/index'
-    patch 'cart_items/update'
-    delete 'cart_items/destroy'
-    delete 'cart_items/destroy_all'
-    post 'cart_items/create'
     get 'customers/show'
     get 'customers/edit'
     patch 'customers/update'
