@@ -11,6 +11,7 @@
           </tr>
         </thead>
         <tbody>
+            <% @total_price = 0 %>
           <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= image_tag cart_item.item.get_image(150,150) %><%= cart_item.item.name %></td>
