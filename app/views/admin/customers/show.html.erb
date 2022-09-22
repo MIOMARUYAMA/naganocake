@@ -1,4 +1,4 @@
-<h1><%= @customer.name %>さんの会員詳細</h1>
+<h1><%= @customer.full_name %>さんの会員詳細</h1>
 
 <h4>会員ID</h4>
 <%= @customer.id %>
@@ -19,5 +19,5 @@
 <h4>会員ステータス</h4>
 <%= @customer.is_active ? '有効' : '退会' %>
 
-<%= link_to "編集する", edit_admin_item_path %>
+<%= link_to "編集する", edit_admin_customer_path %>
 <%= link_to "注文履歴一覧を見る", admin_path %>

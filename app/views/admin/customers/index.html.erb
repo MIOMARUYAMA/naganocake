@@ -2,6 +2,6 @@
 
 <% @customers.each do |customer| %>
   <%= customer.id %>
-  <%= link_to customer.name, admin_customer_path(customer.id) %>
+  <%= link_to customer.full_name, admin_customer_path(customer.id) %>
   <%= customer.is_active ? '有効' : '退会' %>
 <% end %>

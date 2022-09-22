@@ -2,9 +2,9 @@
   <% @items.each do |item| %>
     <%= link_to item_path(item.id) do %>
       <%= image_tag item.get_image(200,200) %>
-    <%= item.name %>
-    ¥<%= item.price %>
-      <% end %>
+      <%= item.name %>
+      ¥<%= item.price %>
+    <% end %>
   <% end %>
 
   <%= link_to 'すべての商品を見る', items_path %>

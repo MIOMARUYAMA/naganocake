@@ -1,7 +1,7 @@
 <h4>注文履歴詳細</h4>
 
 <h4>購入者</h4>
-<%= @order.customer_id.name %>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
 <h4>注文日</h4>
 <%= @order.created_at %>
 <h4>配送先</h4>
@@ -9,7 +9,7 @@
 <h4>配送先氏名</h4>
 <%= @order.name %>
 <h4>支払い方法</h4>
-<%= @order.payment_method %>
+<%= @order.payment_method_i18n %>
 
 <h4>注文ステータス</h4>
 <%= form_with model: @order, url:admin_path do |f| %>

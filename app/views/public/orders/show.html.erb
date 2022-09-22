@@ -32,12 +32,13 @@
            </tr>
         </thead>
           <tbody>
-            <% @total_price = 0 %>
-            <% @order_details.each do |order_deail| %>
-              <td><%= order_deail.item.name %></td>
-              <td><%= order_deail.price %></td>
-              <td><%= order_deail.amount %></td>
-              <td><%= order_deail.price * order_deail.amount %></td>
+             <% total_price = 0 %>
+            <% @order_details.each do |order_detail| %>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal %></td>
+              <% total_price += order_detail.subtotal %>
             <% end %>
           </tr>
     </table>
@@ -51,5 +52,7 @@
           </tr>
         </thead>
         <tbody>
-            <td><%= @total_price %></td>
+            <td><%= total_price %></td>
+            <td>800</td>
+            <td><%= total_price + 800 %></td>
     </table>
