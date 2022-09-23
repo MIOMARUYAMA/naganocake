@@ -12,6 +12,37 @@
 <%= @order.payment_method_i18n %>
 
 <h4>注文ステータス</h4>
-<%= form_with model: @order, url:admin_path do |f| %>
-<%= f.collection_select :order_status, Order.all, :id, :name %>
+<%= form_with model: @order, url: admin_order_path do |f| %>
+    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+    <%= f.submit '更新' %>
 <% end %>
+    <table>
+       <thead>
+          <tr>
+             <th>商品</th>
+              <th>単価（税込）</th>
+              <th>個数</th>
+              <th>小計</th>
+                <th>製作ステータス</th>
+           </tr>
+        </thead>
+          <tbody>
+            <% total_price = 0 %>
+            <% @order_details.each do |order_detail| %>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal %></td>
+              <% total_price += order_detail.subtotal %>
+              <td>
+                <%= form_with model: order_detail, url: admin_order_detail_path do |f| %>
+                    <%= f.select :process, OrderDetail.processes.keys.map {|k| [I18n.t("enums.order_detail.process.#{k}"), k]} %>
+                    <%= f.submit '更新' %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+    </table>
+    商品合計 <%= total_price %><br>
+    送料 800<br>
+    請求金額合計 <%= total_price + 800 %>
