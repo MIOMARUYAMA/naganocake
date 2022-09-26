@@ -35,7 +35,7 @@
               <td><%= order_detail.subtotal %></td>
               <% total_price += order_detail.subtotal %>
               <td>
-                <%= form_with model: order_detail, url: admin_order_detail_path do |f| %>
+                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
                     <%= f.select :process, OrderDetail.processes.keys.map {|k| [I18n.t("enums.order_detail.process.#{k}"), k]} %>
                     <%= f.submit '更新' %>
                 <% end %>

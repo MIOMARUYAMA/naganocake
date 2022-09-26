@@ -3,17 +3,15 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
     @order_details = @order.order_details
-    @order_details.update(order_detail_params)
+    @order_detail.update(order_detail_params)
 
-    if @order_details.where(process: "2").count >= 1
-      @order.order_status == "2"
-      @order.save
-    
-    elsif @order_details.count == @order_details.where(process: 3).count
-      @order.order_status == "3"
-      @order.save
+    if @order_details.where(process: "in_production").count == 1
+      @order.update(order_status: "in_production")
+
+    elsif @order_details.count == @order_details.where(process: "production_complete").count
+      @order.update(order_status: "preparing_delivery")
     end
-    redirect_to admin_order_path
+    redirect_to admin_order_path(@order.id)
   end
 
   private

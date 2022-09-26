@@ -11,10 +11,9 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     @order_details = @order.order_details
 
-    if @order.order_status == "1"
+    if @order.order_status == "payment_confirmation"
       @order_details.each do |order_detail|
-        order_detail.process == "1"
-        order_detail.save
+        order_detail.update(process: "production_pending")
       end
     end
       redirect_to admin_order_path

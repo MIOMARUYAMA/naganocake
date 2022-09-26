@@ -1,24 +1,49 @@
-<h2>商品編集</h2>
-
-<%= form_with model: @item, url:admin_item_path do |f| %>
-<h4>商品画像</h4>
-  <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %>
-<h4>商品名</h4>
-<%= f.text_field :name %>
-<h4>商品説明</h4>
-  <%= f.text_area :introduction %>
-<h4>ジャンル</h4>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-<h4>税抜価格</h4>
-  <%= f.text_field :price %>
-<h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, :true %>
-  <%= f.label :is_active, "販売中" %>
-  <%= f.radio_button :is_active, :false %>
-  <%= f.label :is_active, "販売停止中" %>
-
-  <%= f.submit '変更を保存' %>
-
-<% end %>
-
-
+<main>
+  <h4>商品編集</h4>
+    <div class="d-flex align-items-center justify-content-center">
+      <%= form_with model: @item, url:admin_item_path do |f| %>
+        <div class="form-group row">
+          <label for="item_image" class="col-sm-3">商品画像</label><br>
+            <div class="col-sm-9">
+              <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %>
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="item_name" class="col-sm-3">商品名</label>
+            <div class="col-sm-9">
+              <%= f.text_field :name %>
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="item_introduction" class="col-sm-3">商品説明</label>
+            <div class="col-sm-9">
+            <%= f.text_area :introduction %>
+             </div> 
+        </div>
+        <div class="form-group row">
+          <label for="item_genre" class="col-sm-3">ジャンル</label>
+            <div class="col-sm-9">
+            <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="item_price" class="col-sm-3">税抜価格</label>
+            <div class="col-sm-9">
+              <%= f.text_field :price %>円
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="item_status" class="col-sm-4">販売ステータス</label>
+            <div class="col-sm-8">
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "販売中" %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "販売停止中" %>
+            </div>
+        </div>
+        <div class="section1 text-center">
+          <%= f.submit '変更を保存', class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+</main>
