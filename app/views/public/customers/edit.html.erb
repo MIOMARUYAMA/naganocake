@@ -1,23 +1,59 @@
-<h1>会員情報編集</h1>
-
-<%= form_with model: @customer, url:customers_update_path do |f| %>
-<p>氏名</p>
-<%= f.text_field :last_name %>
-<%= f.text_field :first_name %>
-<p>フリガナ</p>
-<%= f.text_field :last_name_kana %>
-<%= f.text_field :first_name_kana %>
-<p>郵便番号</p>
-<%= f.text_field :postal_code %>
-<p>住所</p>
-<%= f.text_field :address %>
-<p>電話番号</p>
-<%= f.text_field :telephone_number %>
-<p>メールアドレス</p>
-<%= f.text_field :email %>
-
-<%= f.submit '編集内容を保存' %>
-<%= link_to '退会する', customers_unsubscribe_path %>
-
-
-<% end %>
+<main>
+  <div class="container">
+    <h4>会員情報編集</h4>
+    <div class="d-flex align-items-center justify-content-center">
+      <%= form_with model: @customer, url:customers_update_path do |f| %>
+        <div class="row">
+          <label for="customer_name" class="col-sm-3">氏名</label>
+            <div class="form-group col-sm-4 mr-3">
+              <%= f.text_field :last_name %>
+            </div>
+            <div class="form-group col-sm-4">
+              <%= f.text_field :first_name %>
+            </div>
+        </div>
+        <div class="row">
+          <label for="customer_name_kana" class="col-sm-3">フリガナ</label>
+            <div class="form-group col-sm-4 mr-3">
+              <%= f.text_field :last_name_kana %>
+            </div>
+            <div class="form-group col-sm-4">
+              <%= f.text_field :first_name_kana %>
+            </div>
+        </div>
+          <div class="form-group row">
+            <label for="customer_postalcode" class="col-sm-3">郵便番号</label>
+              <div class="col-sm-9">
+                <%= f.text_field :postal_code %>
+              </div>
+          </div>
+          <div class="form-group row">
+            <label for="customer_address" class="col-sm-3">住所</label>
+              <div class="col-sm-9">
+                <%= f.text_field :address %>
+              </div>
+          </div>
+          <div class="form-group row">
+            <label for="customer_phonenumber" class="col-sm-3">電話番号</label>
+              <div class="col-sm-9">
+                <%= f.text_field :telephone_number %>
+              </div>
+          </div>
+          <div class="form-group row">
+            <label for="customer_email" class="col-sm-3">メールアドレス</label>
+              <div class="col-sm-9">
+                <%= f.text_field :email %>
+              </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-sm-9">
+              <%= f.submit '編集内容を保存', class: "btn btn-success" %>
+            </div>
+            <div class="col-sm-3">
+              <%= link_to '退会する', customers_unsubscribe_path, {class: "btn btn-danger"} %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</main>

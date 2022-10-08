@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_09_20_091804) do
     t.string "address", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "CustomerId"
+    t.integer "customer_id"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -128,5 +128,6 @@ ActiveRecord::Schema.define(version: 2022_09_20_091804) do
     t.integer "customer_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end

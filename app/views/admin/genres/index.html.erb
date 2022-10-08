@@ -1,12 +1,12 @@
  <main>
-   <h4>ジャンル一覧・追加</h4>
+   <h4 class="my-4">ジャンル一覧・追加</h4>
      <div class ="container">
         <%= form_with model: @genre, url:admin_genres_path do |f| %>
-        <div class="form-group row">
-          <label for="item_image" lass="col-sm-3">ジャンル名</label>
+        <div class="form-group row mb-5">
+          <label for="item_image" class="col-sm-3">ジャンル名</label>
             <div class="col-sm-9">
             <%= f.text_field :name %>
-            <%= f.submit '新規登録', class:"btn btn-success"%>
+            <%= f.submit '新規登録', class:"btn btn-success offset-1"%>
             </div>
         </div>
         <% end %>

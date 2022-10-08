@@ -1,7 +1,9 @@
-<h1>注文履歴一覧画面</h1>
-  <table>
-     <thead>
-        <tr>
+<main>
+  <div class="container">
+    <h4 class="my-4">注文履歴一覧画面</h4>
+    <table class="table table-hover table-inverse">
+       <thead>
+          <tr>
            <th>注文日</th>
             <th>配送先</th>
             <th>注文商品</th>
@@ -20,14 +22,18 @@
             </td>
             <td>
               <% order.order_details.each do |order_detail| %>
-                <%= order_detail.item.name %>
+                <div class="row">
+                  <%= order_detail.item.name %>
+                </div>
               <% end %>
             </td>
-            <td><%= order.charge %></td>
+            <td><%= order.charge %>円</td>
             <td><%= order.order_status_i18n %></td>
-            <td><%= link_to "表示する", order_path(order) %></td>
+            <td><%= link_to "表示する", order_path(order), {class: "btn btn-primary"} %></td>
           </tr>
         <% end %>
         </tbody>
     </table>
+  </div>
+</main>
 

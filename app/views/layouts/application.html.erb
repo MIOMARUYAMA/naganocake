@@ -12,8 +12,7 @@
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand pl-0" href="/"><%= image_tag('logo.jpeg') %></a>
+        <a class="navbar-brand" href="/"><%= image_tag 'logo.jpeg', size: '250x100' %></a>
           <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
               <h4>ようこそ、<%= current_customer.last_name %>さん！</h4>
@@ -61,7 +60,6 @@
               </li>
             <% end %>
           </ul>
-        </div>
       </nav>
     </header>
     <%= yield %>

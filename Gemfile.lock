@@ -249,6 +249,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
   listen (~> 3.3)
+  mini_magick (~> 4.8)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6, >= 6.1.6.1)

@@ -1,7 +1,18 @@
-<h3>本当に退会しますか？</h3>
-<p>退会すると、会員登録情報や</p>
-<p>これまでの購入履歴が閲覧できなくなります。</p>
-<p>退会する場合は、「退会する」をクリックしてください。</p>
-
-<%= link_to '退会する', customers_withdrawal_path, method: :patch %>
-<%= link_to '退会しない', customers_show_path %>
+<main>
+  <div class="row justify-content-center my-5">
+    <h3>本当に退会しますか？</h3>
+  </div>
+  <div class="row justify-content-center">
+    退会すると、会員登録情報や<br>これまでの購入履歴が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-sm-2">
+      <%= link_to '退会しない', customers_show_path, {class: "btn btn-primary"} %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to customers_withdrawal_path, method: :patch, "data-confirm" => "本当に削除しますか？" do %>
+        <button class="btn btn-danger">退会する</button>
+      <% end %>
+    </div>
+  </div>
+</main>
